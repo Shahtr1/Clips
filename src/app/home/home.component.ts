@@ -1,29 +1,23 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements AfterViewInit {
+export class HomeComponent {
   isMusicPlaying = false;
 
-  musicControlButton?: HTMLVideoElement;
-
-  @ViewChild('videoElement') target?: ElementRef;
-
-  ngAfterViewInit(): void {
-    this.musicControlButton = this.target?.nativeElement;
-  }
+  @ViewChild('videoElement', { static: true }) target?: ElementRef;
 
   play() {
     this.isMusicPlaying = !this.isMusicPlaying;
-    if (this.musicControlButton) this.musicControlButton.play();
+    if (this.target) this.target.nativeElement.play();
   }
 
   pause() {
     this.isMusicPlaying = !this.isMusicPlaying;
 
-    if (this.musicControlButton) this.musicControlButton.pause();
+    if (this.target) this.target.nativeElement.pause();
   }
 }
