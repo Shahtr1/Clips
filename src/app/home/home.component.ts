@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -10,10 +10,10 @@ export class HomeComponent implements AfterViewInit {
 
   musicControlButton?: HTMLVideoElement;
 
+  @ViewChild('videoElement') target?: ElementRef;
+
   ngAfterViewInit(): void {
-    this.musicControlButton = document.getElementById(
-      'videoElement'
-    ) as HTMLVideoElement;
+    this.musicControlButton = this.target?.nativeElement;
   }
 
   play() {
