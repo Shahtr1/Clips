@@ -1,0 +1,5 @@
+.music-button {
+  background-image: linear-gradient(to top, rgb(129, 140, 248) 50%, #fff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
